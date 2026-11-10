@@ -1,0 +1,43 @@
+<%- include("./include/_header") %>
+
+  <main id="site-main">
+    <div class="button-box list-heading">
+      <h1>연락처</h1>
+      <a href="/contacts/add" class="btn btn-light"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> 연락처 추가</a>
+    </div>
+
+    <table class="table" aria-label="연락처 목록">
+      <thead>
+        <tr>
+          <th scope="col">이름</th>
+          <th scope="col">메일 주소</th>
+          <th scope="col">전화번호</th>
+          <th scope="col" class="actions">관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (contacts.length === 0) { %>
+          <tr>
+            <td colspan="4" class="empty-state">등록된 연락처가 없습니다.</td>
+          </tr>
+        <% } %>
+        <% contacts.forEach(contact => { %>
+          <tr>
+            <th scope="row" data-label="이름"><%= contact.name %></th>
+            <td data-label="메일 주소"><%= contact.email %></td>
+            <td data-label="전화번호"><%= contact.phone %></td>
+            <td class="actions">
+              <a href="/contacts/<%= contact._id %>" class="btn update" title="수정" aria-label="연락처 수정">
+                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+              </a>
+              <form action="/contacts/<%= contact._id %>?_method=DELETE" method="POST" style="display: inline;">
+                <input type="submit" class="btn delete" value="삭제">
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+
+<%- include("./include/_footer") %>

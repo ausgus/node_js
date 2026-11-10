@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+:root {
+  --black: #282722;
+  --gray: #686259;
+  --gray-light: #e2dbcf;
+  --paper: #f9f6ee;
+  --surface: #fffdf8;
+  --accent: #32604b;
+  --red: #b30000;
+  --font-size-base: 1rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --border-radius: 16px;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--black);
+  font-size: var(--font-size-base);
+  background-color: var(--paper);
+  line-height: 1.65;
+  margin: 0;
+}
+
+a { color: var(--black); }
+h1 { font-size: var(--font-size-xl); }
+h2 { font-size: var(--font-size-lg); }
+h3 { font-size: var(--font-size-md); }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  color: var(--black);
+  background: var(--surface);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: .65rem 1rem;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn-delete {
+  padding: 10px 16px;
+  background-color: var(--red);
+}
+
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* 레이아웃 */
+.container {
+  max-width: 982px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.main {
+  padding: clamp(1.5rem, 4vw, 3.5rem) 0 4rem;
+}
+
+/* 히어로 이미지 표시 부분 */
+.hero-image {
+  display: block;
+  height: clamp(12rem, 35vw, 24rem);
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius);
+}
+
+
+/* 메인 헤더 */
+.header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "logo button"
+  "menu menu";
+  gap: .5rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+    "logo menu button";
+  }
+}
+
+.header-logo {
+  font-weight: 800;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  text-decoration: none;
+  grid-area: logo;
+}
+
+.header-logo:hover {
+  text-decoration: underline;
+}
+
+.header-nav {
+  justify-content: center;
+  display: flex;
+  grid-area: menu;
+}
+
+.header-logo, .header-nav, .header-button {
+  width: 100%;
+}
+
+.header-button {
+  display: flex;
+  justify-content: end;
+  grid-area: button;
+}
+
+.header-button a {
+  text-decoration: none;
+  white-space: nowrap;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 6px 12px;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid var(--gray-light);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.header-button a:hover {
+  border-color: var(--accent);
+}
+
+/* 헤더의 내비게이션 */
+.header-nav ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  gap: 1rem;
+  font-weight: 600;
+  padding: 0;
+}
+
+.header-nav ul a {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.header-nav ul a.active {
+  color: rgb(126, 126, 126);
+}
+
+.header-nav ul a:hover {
+  text-decoration: underline;
+}
+
+/* 상단 텍스트 - HomePage */
+.top {
+  padding: clamp(1rem, 4vw, 2.5rem) 0 1.75rem;
+}
+
+.top-heading {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: -.06em;
+  line-height: 1.18;
+}
+
+.top-body {
+  font-size: var(--font-size-md);
+  margin: .75rem 0 0;
+  color: var(--gray);
+}
+
+
+/* 게시물 목록 */
+.articles-heading {
+  margin: clamp(2rem, 6vw, 3.5rem) 0 1rem;
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+
+.article-ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--gray-light);
+  border-radius: var(--border-radius);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.article-list-date {
+  font-size: 1rem;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+.article-ul li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  gap: .35rem 1rem;
+  padding: 1rem clamp(.85rem, 3vw, 1.5rem);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+@media only screen and (min-width: 768px) {
+  .article-ul li a {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .article-list-date {
+    text-align: right;
+  }
+}
+
+.article-ul li {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.article-ul li a:hover {
+  background: #edf3ec;
+  color: var(--accent);
+}
+
+.article-ul .empty-state {
+  padding: 1rem 1.5rem;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.article-list-date {
+  font-weight: 400;
+}
+
+.article-ul li:not(:last-child) {
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.main > h1:has(+ .article),
+.article {
+  max-width: 42rem;
+  margin-inline: auto;
+  overflow-wrap: anywhere;
+}
+
+.article {
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--gray-light);
+  white-space: pre-wrap;
+  line-height: 1.85;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.pagination {
+  font-size: 1.3rem;
+  color: var(--gray);
+  text-decoration: none;
+  margin-top: 40px;
+  display: inline-block;
+}
+
+.pagination:hover {
+  color: var(--black);
+}
+
+
+/* 푸터 */
+.footer {
+  margin: 4rem;
+  text-align: center;
+}
+
+
+/* 관리자 화면 대시보드 */
+.admin-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-posts {
+  padding: 0;
+  margin: 0;
+}
+
+.admin-post-controls form {
+  display: inline-block;
+}
+
+.admin-post-controls .btn  {
+  display: inline-block;
+  background-color: var(--black);
+  color: var(--gray-light);
+  border: 0;
+  text-decoration: none;
+  font-size: .8rem;
+  padding: 4px 8px;
+  line-height: 2;
+}
+
+.admin-posts li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}

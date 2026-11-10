@@ -1,0 +1,269 @@
+:root {
+  --page: #f3f6fc;
+  --surface: #fff;
+  --ink: #172541;
+  --muted: #52617a;
+  --line: #dbe3ef;
+  --accent: #2856d9;
+  --accent-hover: #1e44b3;
+  --radius: 16px;
+  --shadow: 0 12px 32px rgb(27 49 87 / 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--page);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.container {
+  max-width: 960px;
+}
+
+header.border-shadow {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+header nav {
+  padding: 1rem 0;
+}
+
+header nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 750;
+}
+
+header nav .fa-solid {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--accent);
+}
+
+#site-main {
+  width: min(960px, calc(100% - 2rem));
+  margin: clamp(2rem, 6vw, 4.5rem) auto;
+}
+
+#site-main h1,
+#site-main h2,
+#site-main h3 {
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+
+#site-main h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+#site-main p {
+  color: var(--muted);
+}
+
+.button-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+
+.list-heading {
+  justify-content: space-between;
+}
+
+.button-box i {
+  margin-right: .45rem;
+}
+
+.list-heading .btn,
+#site-main form button,
+#site-main .register-btn {
+  padding: .7rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--accent);
+  font-weight: 650;
+}
+
+.list-heading .btn:hover,
+#site-main form button:hover,
+#site-main .register-btn:hover {
+  color: #fff;
+  background: var(--accent-hover);
+}
+
+.button-box:not(.list-heading) .btn {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.table {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.table > :not(caption) > * > * {
+  padding: .9rem 1.1rem;
+  border-color: var(--line);
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.table thead th {
+  background: #eaf0fb;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+.table tbody th {
+  font-weight: 650;
+}
+
+.table .actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.table .btn {
+  min-width: 2.5rem;
+  border-radius: 8px;
+  color: var(--accent);
+  background: #edf2ff;
+}
+
+.table .delete {
+  color: #a5283e;
+  background: #fff0f2;
+}
+
+.table .btn:hover {
+  border-color: currentColor;
+}
+
+.table .empty-state {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.home-container,
+.user-info,
+.register {
+  width: min(100%, 34rem);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+#site-main > h2,
+#site-main > h3,
+#site-main > p {
+  text-align: center;
+}
+
+.login label,
+.register label,
+.user-info label {
+  display: block;
+  margin-bottom: .35rem;
+  font-weight: 650;
+}
+
+.login input,
+.register input:not([type="submit"]),
+.user-info input {
+  width: 100%;
+  margin-bottom: .9rem;
+  padding: .7rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fbfcff;
+}
+
+#site-main :is(a, button, input):focus-visible,
+header a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+#site-main form button,
+#site-main .register-btn {
+  width: 100%;
+  margin-top: .25rem;
+}
+
+@media (max-width: 600px) {
+  .table {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .table,
+  .table tbody,
+  .table tr {
+    display: block;
+  }
+
+  .table tbody tr {
+    margin-bottom: .75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .table tbody :is(th, td) {
+    display: block;
+    padding: .55rem .9rem;
+  }
+
+  .table [data-label]::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--muted);
+    font-size: .75rem;
+    font-weight: 600;
+  }
+
+  .table .actions,
+  .table .empty-state {
+    border-bottom: 0;
+  }
+}
